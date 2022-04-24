@@ -1,0 +1,39 @@
+<p>Изаберите .docx фајлове за хифенацију:</p>
+<p-fileUpload #fileUpload name="pubfiles[]" chooseLabel="Изабери" uploadLabel="Пошаљи" cancelLabel="Откажи"
+    [multiple]="true" [style]="{'width': '600px'}" [customUpload]="true" (uploadHandler)="upload($event)">
+    <ng-template pTemplate="file" let-upload let-i="index" let-c="count">
+        <div class="p-fileupload-row">
+            <div class="p-fileupload-filename">{{upload.name}}</div>
+            <div class="w100">{{formatSize(upload.size)}}</div>
+            <div class="w50">
+                <button type="button" icon="pi pi-times" pButton (click)="remove($event,i)"
+                    [disabled]="fileUpload.uploading"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-fileUpload>
+<div class="w600" *ngIf="resultFiles.length > 0">
+    <p>Фајлови са хифенираним текстом:</p>
+    <p-table [value]="resultFiles" responsiveLayout="scroll">
+        <!-- <ng-template pTemplate="header">
+            <tr>
+                <th>Фајл</th>
+                <th>Стање</th>
+                <th>&nbsp;</th>
+            </tr>
+        </ng-template> -->
+        <ng-template pTemplate="body" let-fajl>
+            <tr>
+                <td>{{fajl.filename_new}}</td>
+                <td>
+                    <p-tag value="{{fajl.status_text}}" severity="{{fajl.severity}}"></p-tag>
+                    <i *ngIf="fajl.status === 2" class="pi pi-spin pi-spinner ml-2"></i>
+                </td>
+                <td>
+                    <a class="download-button" *ngIf="fajl.status === 3" href="{{fajl.url_new}}" download="{{fajl.filename_new}}" target="_blank">преузми</a>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>    
+    <p>Хифенирани фајлови су доступни наредних 15 минута.</p>
+</div>

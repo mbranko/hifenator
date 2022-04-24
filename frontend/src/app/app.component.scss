@@ -1,0 +1,38 @@
+:host ::ng-deep .p-menubar {
+  top: 0;
+  margin: 0;
+  border-radius: 0;
+  width: 100%;
+  position: sticky;
+  z-index: 5;
+  background-color: #363636;
+  color: rgb(236, 236, 236);
+}
+
+.logo {
+  cursor: pointer;
+
+  img {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .logo-text {
+    font-family: 'Fira Sans' !important;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16pt;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+      color: rgb(236, 236, 236);
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  padding: 10px;
+}
