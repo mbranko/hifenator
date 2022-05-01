@@ -6,6 +6,8 @@ services:
     volumes:
       - ./db.sqlite3:/app/db.sqlite3
       - ./media:/app/media
+    networks:
+      hifenator:
   nginx:
     container_name: hfntr-nginx
     depends_on:
@@ -24,6 +26,8 @@ services:
       - traefik.http.routers.nginx-secured.entrypoints=websecure
       - traefik.http.routers.nginx-secured.tls.certresolver=letsencrypt
       - traefik.http.routers.nginx-secured.tls=true
+    networks:
+      hifenator:
   qcluster:
     container_name: hfntr-qcluster
     depends_on: 
@@ -33,3 +37,8 @@ services:
     volumes:
       - ./db.sqlite3:/app/db.sqlite3
       - ./media:/app/media
+    networks:
+      hifenator:
+networks:
+  hifenator:
+    external: true
