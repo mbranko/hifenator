@@ -24,8 +24,6 @@ services:
       - traefik.http.routers.nginx-secured.entrypoints=websecure
       - traefik.http.routers.nginx-secured.tls.certresolver=letsencrypt
       - traefik.http.routers.nginx-secured.tls=true
-    ports:
-      - "8080:80"
   qcluster:
     container_name: hfntr-qcluster
     depends_on: 
