@@ -59,5 +59,7 @@ cd hifenator
 mkdir log
 mkdir media
 docker-compose build
+docker network create hifenator
+docker network add hifenator traefik
 docker-compose up -d
 ```
