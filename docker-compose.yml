@@ -17,10 +17,10 @@ services:
       - ./log:/log
       - ./media:/media
     labels:
-      - traefik.http.routers.nginx.rule=Host(`hifenator.rs`)
+      - "traefik.http.routers.nginx.rule=Host(`hifenator.rs`)"
       - traefik.http.routers.nginx.entrypoints=web
       - traefik.http.routers.nginx.middlewares=redirect-to-https@docker
-      - traefik.http.routers.nginx-secured.rule=Host(`hifenator.rs`)
+      - "traefik.http.routers.nginx-secured.rule=Host(`hifenator.rs`)"
       - traefik.http.routers.nginx-secured.entrypoints=websecure
       - traefik.http.routers.nginx-secured.tls.certresolver=letsencrypt
       - traefik.http.routers.nginx-secured.tls=true
