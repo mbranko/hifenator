@@ -8,6 +8,7 @@ services:
       - ./media:/app/media
     networks:
       hifenator:
+    restart: always
   nginx:
     container_name: hfntr-nginx
     depends_on:
@@ -39,6 +40,7 @@ services:
       - ./media:/app/media
     networks:
       hifenator:
+    restart: always
 networks:
   hifenator:
     external: true
